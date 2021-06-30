@@ -53,6 +53,11 @@ public class Critter {
 
     public void sleep() {
         System.out.println(name + " sleeps.");
+        for(int i = 0; i < 5; i++) {
+            System.out.println("Zzz...");
+            try { Thread.sleep(1000); }
+            catch (InterruptedException e) {}
+        }
         tiredness = 0;
         addToFoodLevel(-3);
     }
