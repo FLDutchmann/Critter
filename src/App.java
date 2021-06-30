@@ -19,7 +19,11 @@ public class App {
             System.out.println("What would you like " + name + " to do?");
             String lineRead = scanner.nextLine();
             if (lineRead.equalsIgnoreCase("eat")) {
-                bob.feed();
+                System.out.println("What would you like " + name + " to eat?");
+                lineRead = scanner.nextLine();
+                if(lineRead.equalsIgnoreCase("banana")){
+                    bob.feed(new Banana());
+                }
             } else if (lineRead.equalsIgnoreCase("sleep")) {
                 bob.sleep();
             } else if (lineRead.equalsIgnoreCase("exercise")) {

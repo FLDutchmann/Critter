@@ -30,7 +30,7 @@ public class Critter {
         hasWon = true;
     }
 
-    private void addToFoodLevel(int amount) {
+    public void addToFoodLevel(int amount) {
         foodLevel += amount;
         if (foodLevel <= 0) {
             System.out.println(name + " starves to death.");
@@ -42,13 +42,20 @@ public class Critter {
         }
     }
 
-    private void addToTiredness(int amount) {
+    public void addToTiredness(int amount) {
         tiredness += amount;
         if (tiredness > 5) {
             System.out.println(name + " is sleepy from so much food.");
             sleep();
         }
 
+    }
+
+    public void addToFitness(int amount) {
+        if(fitness >= 10 && isAlive) {
+            System.out.println(name + " is in great shape.");
+            win();
+        }
     }
 
     public void sleep() {
@@ -62,21 +69,17 @@ public class Critter {
         addToFoodLevel(-3);
     }
 
-    public void feed() {
+    public void feed(Food food) {
         if (isAlive) {
             System.out.println(name + " eats.");
-            addToFoodLevel(1);
-            if(isAlive) addToTiredness(1);
+            food.applyFood(this);
         }
     }
 
     public void exercise() {
         System.out.println(name + " exercises.");
-        fitness++;
+
         addToTiredness(2);
-        if(fitness >= 10 && isAlive) {
-            System.out.println(name + " is in great shape.");
-            win();
-        }
+        if(isAlive) addToFitness(1);
     }
 }

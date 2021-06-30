@@ -10,9 +10,9 @@ public class Cat extends Critter{
     }
 
     @Override
-    public void feed() {
+    public void feed(Food food) {
         System.out.println("Meow!");
-        super.feed();
+        super.feed(food);
     }
 
     @Override
